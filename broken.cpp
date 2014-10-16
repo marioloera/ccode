@@ -5,7 +5,7 @@ using namespace std;
 
 int ComputeFactorial(int number) 
     {
-       int fact = 0;
+       int fact = 1;
        for (int j = 1; j <= number; j++) 
            {
         	fact = fact * j;
