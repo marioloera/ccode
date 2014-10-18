@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 int factorial(int);
 int main()
 {
@@ -7,12 +6,12 @@ int main()
     int  game;
     char cont;
     do{
-        printf("New version for git ");
         printf("Type in a number to get the factorial: ");
         scanf("%d",&a);
         //printf("you type %d\n",a);
-        x=factorial(a);
+	x=factorial(a);
         printf("The factorial of %d is %d\n",a,x);
+        getchar();//clean buffer for new scanf
         printf("Do you need to get another number y/n: ? ");
         scanf("%s",&cont);
         if (cont=='y' || cont=='Y')

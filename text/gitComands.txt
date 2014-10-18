@@ -3,7 +3,7 @@ Git Commands
 git init
 
 %create the list to ignore files
-vi .gitignore
+vim .gitignore
 [esc]:x[enter]
 
 git add FILENAME	
