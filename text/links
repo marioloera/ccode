@@ -1,0 +1,52 @@
+
+rostopic pub /motor_controller/twist geometry_msgs/Twist -r 1 -- '[0.14, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
+rostopic pub /mobile_base/commands/velocity geometry_msgs/Twist -r 1 -- '[0.3, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
+
+
+//launch lab1
+roslaunch ras_lab1_launch kobuki_lab1.launch
+roslaunch kobuki_keyop keyop.launch
+
+//task1
+rosrun ras_lab1_distance_sensor distance_sensor_test_node
+rosrun ras_lab1_ds_calib distance_sensor_calib_node
+
+//task2
+rosrun ras_lab1_open_loop_control ras_lab1_open_loop_control_node
+
+//task3
+rosrun ras_lab1_motor_controller ras_lab1_open_motor_controller_node
+rosrun ras_lab1_cartesian_controller line_cartesian_controller_node
+
+rosrun ras_lab1_cartesian_controller line_cartesian_controller_node /motor_controller/twist:=/mobile_base/commands/velocity
+
+//task4
+rosrun ras_lab1_cartesian_controller circle_cartesian_controller_node 
+
+rosrun ras_lab1_cartesian_controller circle_cartesian_controller_node  /motor_controller/twist:=/mobile_base/commands/velocity
+
+//task5
+rosrun ras_lab1_cartesian_controller wall_following_controller_node /motor_controller/twist:=/mobile_base/commands/velocity
+
+rosrun ras_lab1_cartesian_controller wall_following_controller_node 
+
+//recorde a subset, select the topics
+rosbag record -O distance_adc.bag /distance_sensor_test_node/adc /distance_sensor_test_node/distance 
+
+//retruve a rosbag data into the sistem
+rosbag play -r 1 distance_adc.bag
+
+//convert a specific entry to text file
+rostopic echo -p -b distance_adc.bag /distance_sensor_test_node/adc/ch1 >> adc_ch1.txt
+rostopic echo -p -b distance_adc.bag /distance_sensor_test_node/distance >> distance.txt
+
+//publish in to the adc channel
+rostopic pub kobuki/adc ras_arduino_msgs/ADConverter -r 1 -- '11' '22' '33' '44' '55' '66' '77' '88'
+rostopic pub kobuki/pwm ras_arduino_msgs/PWM -r 1 -- '255' '255'
+rostopic echo /distance_sensor_test_node/adc
+
+//publish form terminal the distance to get adc values
+rostopic pub /distance_sensor_test_node/distance std_msgs/Float64 "data: .00" -r 10
+rostopic pub /distance_sensor_test_node/distance std_msgs/Float64 '0.1' -r .5
+
+rostopic type kobuki/adc | rosmsg show

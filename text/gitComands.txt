@@ -1,0 +1,34 @@
+Git Commands
+
+git init
+
+%create the list to ignore files
+vi .gitignore
+[esc]:x[enter]
+
+git add FILENAME	
+
+git commit -m"MESSAGE ABOUT COMMIT"
+
+git status
+
+%difference between working and staged 
+git diff 
+
+%difference between staged and commit
+git diff --staged
+
+% remove a file
+git rm FILENAME	
+
+% untrack a file
+git rm —-cached FILENAME
+
+% untrack a deleted file
+git checkout —- FILENAME
+
+%untrack a directory
+git rm -r --cache directory
+
+%change the name of a git file
+git mv old name newname

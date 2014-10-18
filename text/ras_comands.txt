@@ -1,0 +1,4 @@
+ssh ras@192.168.0.204 robo\
+
+ssh ras@192.168.0.104 central\
+}
