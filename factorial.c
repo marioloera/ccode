@@ -7,6 +7,7 @@ int main()
     int  game;
     char cont;
     do{
+        printf("New version for git ");
         printf("Type in a number to get the factorial: ");
         scanf("%d",&a);
         //printf("you type %d\n",a);
