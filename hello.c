@@ -1,6 +1,6 @@
 #include <stdio.h>//add library
 
-main()//main funtion
+int main()//main funtion
 
 {
 
@@ -27,16 +27,16 @@ long int c=1;
 	printf("size of a=%d \n",x );
 	
 	printf("\n");
-	printf("size of int=%d\n",sizeof(int));
-       	printf("size of short int=%d\n",sizeof(short int));
-	printf("size of long int=%d\n",sizeof(long int));	
-	printf("size of char=%d\n",sizeof(char));
+	printf("size of int=%lu\n",sizeof(int));
+       	printf("size of short int=%lu\n",sizeof(short int));
+	printf("size of long int=%lu\n",sizeof(long int));	
+	printf("size of char=%lu\n",sizeof(char));
 
 	if(-1)
 		printf("the logical condition of -1 is true\n");
 			
 	else
 		printf("the logical condition of -1 is false\n");
-
+return 0;
 }//close main funtion
 
