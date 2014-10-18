@@ -8,3 +8,4 @@ ompiled source #
 *.so
 *.swp
 *.out
+*.DS_Store
