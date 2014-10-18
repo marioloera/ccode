@@ -1,3 +1,7 @@
+#ifndef factorial_function
+#define factorial_function
+
+
 int factorial(int a)
 {
     int result =1;
@@ -9,3 +13,4 @@ int factorial(int a)
      return result;
 }
 
+#endif

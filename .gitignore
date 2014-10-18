@@ -6,3 +6,5 @@ ompiled source #
 *.exe
 *.o
 *.so
+*.swp
+*.out

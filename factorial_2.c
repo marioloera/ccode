@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 #include "factorial_funtion.h" 
 
 int main()
@@ -7,7 +8,7 @@ int main()
     int  game;
     char cont;
     do{
-        printf("Type in a number to get the factorial: ");
+        printf("Please type in a number to get the factorial: ");
         scanf("%d",&a);
         //printf("you type %d\n",a);
 	x=factorial(a);
