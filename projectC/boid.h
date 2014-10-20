@@ -1,6 +1,8 @@
 //  boild.h
 //  Created by Mario Loera Lozano on 10/20/14.
+//  EL2310 C project Boild Algorithm
 //  Copyright (c) 2014 kth. All rights reserved.
+
 
 #ifndef test_boild_h
 #define test_boild_h
@@ -51,6 +53,29 @@
             return value < low ? low : (value > high ? high : value);
         }
 
+
+        //general structure coordinates x y z
+        struct coordinates{
+            double x;
+            double y;
+            double z;
+        };
+        struct coordinates p_target;//stru for target pos, mouse
+        struct coordinates p_average;//postion average
+        struct coordinates v_average;//velocity average
+        struct coordinates dif;//calculate the distances
+
+    //structure for storage the the boild[N]; with all the elements of positions and velocities
+    struct boid{
+        struct coordinates pos;
+        struct coordinates vel;
+        struct coordinates v_cen;
+        struct coordinates v_rep;
+        struct coordinates v_coh;
+        struct coordinates v_tar;
+    };
+
+    /*
     //delay funtion
     void delay(int max){
         max=clamp_int(max,1,5);
@@ -59,56 +84,6 @@
         }
         return;
     }
-
-    //structure for storage the the boild[N];
-    struct position{
-        double x;
-        double y;
-        double z;
-    };
-    struct velocity{
-        double x;
-        double y;
-        double z;
-    };
-    struct velocity_centering{
-        double x;
-        double y;
-        double z;
-    };
-    struct velocity_repulsion{
-        double x;
-        double y;
-        double z;
-    };
-    struct velocity_cohesion{
-        double x;
-        double y;
-        double z;
-    };
-    struct velocity_target{
-        double x;
-        double y;
-        double z;
-    };
-    struct boid{
-        struct position pos;
-        struct velocity vel;
-        struct velocity_centering v_cen;
-        struct velocity_repulsion v_rep;
-        struct velocity_cohesion v_coh;
-        struct velocity_target v_tar;
-    };
-    //structure for genral x y
-    struct general_xyz{
-        double x;
-        double y;
-        double z;
-    };
-    struct general_xyz p_target;//stru for target pos, mouse
-    struct general_xyz p_average;//postion average
-    struct general_xyz v_average;//velocity average
-    struct general_xyz dif;//calculate the distances
-
+    */
 
 #endif

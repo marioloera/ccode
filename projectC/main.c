@@ -1,3 +1,8 @@
+//  main.c
+//  Created by Mario Loera Lozano on 10/20/14.
+//  EL2310 C project Boild Algorithm
+//  Copyright (c) 2014 kth. All rights reserved.
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -156,7 +161,6 @@ void update_boids(void)
         b[i].v_coh.z=v_average.z-b[i].vel.z;
     }
 
-
     //restet repulsion velocity
     for(i=0;i<NR_BOIDS-1;i++){
         b[i].v_rep.x=0;
@@ -221,8 +225,6 @@ void update_boids(void)
         b[i].pos.y=clamp_double(b[i].pos.y,1,SCREEN_HEIGHT-1);
         b[i].pos.z=clamp_double(b[i].pos.z,5,SCREEN_HEIGHT-1);
     }
-
-
 }
 
 int render_screen(SDL_Surface* screen)
