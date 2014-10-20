@@ -54,18 +54,27 @@
     struct position{
         double x;
         double y;
-        double z;
+        //double z;
     };
 
     struct velocity{
         double x;
         double y;
-        double z;
-        
+        //double z;
     };
+
+    struct vel_update{
+        double cen;
+        double rep;
+        double coh;
+        double tar;
+        //double z;
+    };
+
     struct boid{
         struct position pos;
         struct velocity vel;
+        struct vel_update v_upd;
     };
 
     struct boid b[10];//array of boild

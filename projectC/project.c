@@ -6,8 +6,8 @@
 #include "boild.h" //definitions of structure, functions
 
 
-void write_parameters();
-double * read_parameters();
+//void write_parameters();
+//double * read_parameters();
 
 int main()
 {
