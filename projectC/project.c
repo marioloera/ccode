@@ -34,7 +34,7 @@ int main()
             //* (param+4)= V_MAX
             //* (param+5)= REPULSION_DISTANCE
         
-        printf("\nnew paramenter from text file: %lf %lf %lf %lf %lf %lf \n\n",*param,*(param+1),*(param+2), *(param+3), *(param+4), *(param+5));
+        printf("new paramenter from text file: %lf %lf %lf %lf %lf %lf \n",*param, *(param+1), *(param+2), *(param+3), *(param+4), *(param+5));
         delay(3);//
     }
     return 0;
