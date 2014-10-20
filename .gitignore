@@ -9,3 +9,4 @@ ompiled source #
 *.swp
 *.out
 *.DS_Store
+parameters_boids.txt
