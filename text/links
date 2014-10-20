@@ -1,3 +1,4 @@
+rqt_plot &
 
 rostopic pub /motor_controller/twist geometry_msgs/Twist -r 1 -- '[0.14, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
 rostopic pub /mobile_base/commands/velocity geometry_msgs/Twist -r 1 -- '[0.3, 0.0, 0.0]' '[0.0, 0.0, 0.0]'

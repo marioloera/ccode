@@ -1,0 +1,6 @@
+k_centre = 3.0001
+k_repulsion = 5.5
+k_cohesion = 34.00025
+k_target = 0.25
+V_MAX = 4.0
+REPULSION_DISTANCE = 30.230
