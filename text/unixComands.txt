@@ -21,3 +21,5 @@ rm –rf  DIRECTORY (ALL FILES)cat file1                                 open a 
 less file1 	                       open a file in pages
 cat file1 file2 > newcombinedfile       combine to file cp i oldfile.txt newfile.txt          copy a file 
 cat oldfile.txt > newfile.txt          copy a file
+
+rqt_plot &   run in the background
