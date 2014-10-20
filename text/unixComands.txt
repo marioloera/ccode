@@ -23,3 +23,6 @@ cat file1 file2 > newcombinedfile       combine to file cp i oldfile.txt newfile
 cat oldfile.txt > newfile.txt          copy a file
 
 rqt_plot &   run in the background
+
+gedit ~/.bashrc
+#force_color_prompt=yes
