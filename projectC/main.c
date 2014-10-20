@@ -113,7 +113,8 @@ int main(int argc,char** argv)
 
 void update_boids(void)
 {
-    int i;
+    int i,j;//counters for loops
+    double dist=0;
     double * param=read_parameters();//pointer to acces the parameters
        double k_centre= * param;
        double k_repulsion= * (param+1);
@@ -136,12 +137,55 @@ void update_boids(void)
     p_average.z/=NR_BOIDS;
 
     //v_average
-
+    v_average.x=0;
+    v_average.y=0;
+    v_average.z=0;
+    for(i=0;i<NR_BOIDS;i++){
+        v_average.x+=b[i].vel.x;
+        v_average.y+=b[i].vel.y;
+        v_average.z+=b[i].vel.z;
+    }
+    v_average.x/=NR_BOIDS;
+    v_average.y/=NR_BOIDS;
+    v_average.z/=NR_BOIDS;
 
     //cohesion velocit
+    for(i=0;i<NR_BOIDS;i++){
+        b[i].v_coh.x=v_average.x-b[i].vel.x;
+        b[i].v_coh.y=v_average.y-b[i].vel.y;
+        b[i].v_coh.z=v_average.z-b[i].vel.z;
+    }
 
-    //p_distances
-    //repulsion velocity
+
+    //restet repulsion velocity
+    for(i=0;i<NR_BOIDS-1;i++){
+        b[i].v_rep.x=0;
+        b[i].v_rep.y=0;
+        b[i].v_rep.z=0;
+    }
+    //new repulsion velocity
+    int n=1;
+    for(i=0;i<NR_BOIDS-1;i++){
+         for(j=n;j<NR_BOIDS;j++){
+             //fprintf(stderr,"i=%d,j=%d\n",i,j);
+             //calculate diference
+             dif.x=b[i].pos.x-b[j].pos.x;
+             dif.y=b[i].pos.y-b[j].pos.y;
+             dif.z=b[i].pos.z-b[j].pos.z;
+             //distance, no neet to get square root
+             dist=dif.x*dif.x+dif.y*dif.y+dif.z*dif.z;
+             //upadte repulsion velocity
+             if (dist<REPULSION_DISTANCE*REPULSION_DISTANCE){
+                 b[i].v_rep.x+=dif.x;
+                 b[j].v_rep.x-=dif.x;
+                 b[i].v_rep.y+=dif.y;
+                 b[j].v_rep.y-=dif.y;
+                 b[i].v_rep.z+=dif.z;
+                 b[j].v_rep.z-=dif.z;
+             }
+         }
+         n++;
+    }
 
     //Centering velocity
      for(i=0;i<NR_BOIDS;i++){
@@ -158,21 +202,27 @@ void update_boids(void)
     }
     //total velocity & clamp
     for(i=0;i<NR_BOIDS;i++){
-        b[i].vel.x+=k_target*b[i].v_tar.x+b[i].v_cen.x*k_centre;
-        b[i].vel.y+=k_target*b[i].v_tar.y+b[i].v_cen.y*k_centre;
-        b[i].vel.z+=k_target*b[i].v_tar.z+b[i].v_cen.z*k_centre;
+        b[i].vel.x+=k_target*b[i].v_tar.x+k_centre*b[i].v_cen.x+k_cohesion*b[i].v_coh.x+k_repulsion*b[i].v_rep.x;
+        b[i].vel.y+=k_target*b[i].v_tar.y+k_centre*b[i].v_cen.y+k_cohesion*b[i].v_coh.y+k_repulsion*b[i].v_rep.y;
+        b[i].vel.z+=k_target*b[i].v_tar.z+k_centre*b[i].v_cen.z+k_cohesion*b[i].v_coh.z+k_repulsion*b[i].v_rep.z;
 
         b[i].vel.x=clamp_double(b[i].vel.x,-1*v_max,v_max);
         b[i].vel.y=clamp_double(b[i].vel.y,-1*v_max,v_max);
         b[i].vel.z=clamp_double(b[i].vel.z,-1*v_max,v_max);
     }
 
-    //position update
+    //position update & cast
     for(i=0;i<NR_BOIDS;i++){
         b[i].pos.x+=b[i].vel.x;
         b[i].pos.y+=b[i].vel.y;
         b[i].pos.z+=b[i].vel.z;
+
+        b[i].pos.x=clamp_double(b[i].pos.x,1,SCREEN_WIDTH-1);
+        b[i].pos.y=clamp_double(b[i].pos.y,1,SCREEN_HEIGHT-1);
+        b[i].pos.z=clamp_double(b[i].pos.z,5,SCREEN_HEIGHT-1);
     }
+
+
 }
 
 int render_screen(SDL_Surface* screen)

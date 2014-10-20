@@ -8,11 +8,11 @@
     void write_parameters(){
 
         double k_centre = 0.005; //0.005
-        double k_repulsion = 0.5;
-        double k_cohesion = 0.00025;
+        double k_cohesion = 0.005;//0.005
         double  k_target = 0.08;//0.08;
-        double V_MAX = 5.0; //5.0
+        double V_MAX = 25.0; //5.0
         double REPULSION_DISTANCE = 30.0;
+        double k_repulsion = 0.2;
 
         printf("creat file parameters_boids.txt\n ");
         FILE *fw = NULL;
@@ -100,14 +100,15 @@
         struct velocity_target v_tar;
     };
     //structure for genral x y
-    struct general_xy{
+    struct general_xyz{
         double x;
         double y;
         double z;
     };
-    struct general_xy p_target;//stru for target pos, mouse
-    struct general_xy p_average;//postion average
-    struct general_xy v_average;//velocity average
+    struct general_xyz p_target;//stru for target pos, mouse
+    struct general_xyz p_average;//postion average
+    struct general_xyz v_average;//velocity average
+    struct general_xyz dif;//calculate the distances
 
 
 #endif
