@@ -15,3 +15,10 @@ clean:
 
 debug:
 	$(CC)  $(CFLAGS) -o $(MAIN) $(MAIN_OBJS) $(LIBS) -g
+
+build:
+	 $(CC) $(CFLAGS) -o $(MAIN) $(MAIN_OBJS) $(LIBS)
+
+run:
+	./amain.o
+cbr: clean build run 

@@ -6,11 +6,19 @@
 #define test_boild_h
     //cretete text file for parametes
     void write_parameters(){
+
+        double k_centre = 0.005; //0.005
+        double k_repulsion = 0.5;
+        double k_cohesion = 0.00025;
+        double  k_target = 0.08;//0.08;
+        double V_MAX = 5.0; //5.0
+        double REPULSION_DISTANCE = 30.0;
+
         printf("creat file parameters_boids.txt\n ");
         FILE *fw = NULL;
         fw = fopen("parameters_boids.txt", "w");
         /////////////////CREATE A FILE/////////////////
-        fprintf(fw, "k_centre = 0.0001\nk_repulsion = 0.5\nk_cohesion = 0.00025\nk_target = 0.005\nV_MAX = 45.0\nREPULSION_DISTANCE = 30.0");
+        fprintf(fw,"k_centre = %lf\nk_repulsion = %lf\nk_cohesion = %lf\nk_target = %lf\nV_MAX = %lf\nREPULSION_DISTANCE =%lf",k_centre, k_repulsion, k_cohesion ,k_target,V_MAX,REPULSION_DISTANCE);
         fclose(fw);
         return;
     }
@@ -18,12 +26,14 @@
     //update parameters from text file
     double * read_parameters(){
         static double parameters[6];//static point to store the parameter and acces with pointer
-        //* param    = k_centre
-        //* (param+1)= k_repulsion
-        //* (param+2)= k_cohesion
-        //* (param+3)= k_target
-        //* (param+4)= V_MAX
-        //* (param+5)= REPULSION_DISTANCE
+        /*
+        * param    = k_centre
+        * (param+1)= k_repulsion
+        * (param+2)= k_cohesion
+        * (param+3)= k_target
+        * (param+4)= V_MAX
+        * (param+5)= REPULSION_DISTANCE
+        */
         /////////////////READ A FILE/////////////////
         FILE *fr = NULL;
         fr = fopen("parameters_boids.txt", "r");
@@ -54,42 +64,50 @@
     struct position{
         double x;
         double y;
-        //double z;
+        double z;
     };
-
     struct velocity{
         double x;
         double y;
-        //double z;
+        double z;
     };
-
-    struct vel_update{
-        double cen;
-        double rep;
-        double coh;
-        double tar;
-        //double z;
+    struct velocity_centering{
+        double x;
+        double y;
+        double z;
     };
-
+    struct velocity_repulsion{
+        double x;
+        double y;
+        double z;
+    };
+    struct velocity_cohesion{
+        double x;
+        double y;
+        double z;
+    };
+    struct velocity_target{
+        double x;
+        double y;
+        double z;
+    };
     struct boid{
         struct position pos;
         struct velocity vel;
-        struct vel_update v_upd;
+        struct velocity_centering v_cen;
+        struct velocity_repulsion v_rep;
+        struct velocity_cohesion v_coh;
+        struct velocity_target v_tar;
     };
-
-    struct boid b[10];//array of boild
-    struct boid *bp=&b[0];//pointer to acces the array
-
-
-//    void print_pointer(struct boild *local){
-//        printf("b[2].vel.y=89 = %f\n",local[2].vel.y);
-//        return;
-//    }
-
-//    void update_pointer(struct boild *local,double a){
-//        local[2].vel.y=a;
-//        return;
-//    }
+    //structure for genral x y
+    struct general_xy{
+        double x;
+        double y;
+        double z;
+    };
+    struct general_xy p_target;//stru for target pos, mouse
+    struct general_xy p_average;//postion average
+    struct general_xy v_average;//velocity average
 
 
 #endif
