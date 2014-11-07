@@ -12,7 +12,7 @@
 #include <iostream>
 
 World::World()
-{}
+{std::cout << "call constructor World"  << std::endl;}
 
 World::~World()
 {}

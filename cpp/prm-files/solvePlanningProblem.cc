@@ -10,7 +10,11 @@
 //#define WIN32
 
 #include "SingleCircleWorld.hh"
+#include "MyWorld.hh"
+#include "Obstacle.hh"
 #include "PRM.hh"
+
+//test
 
 #ifndef WIN32
 #include <unistd.h>  
@@ -24,6 +28,8 @@
 int main(int argc, char **argv)
 {
   std::string probSpecFile = "problem1.txt";
+  std::string worldModel = "SingleCircleWorld";
+  
   int numNodes = 100;
   int numEdges = 10;
   double stepSize = 0.1;
@@ -31,7 +37,6 @@ int main(int argc, char **argv)
   const double xMax = 10;
   const double yMin = 0;
   const double yMax = 10;
-  std::string worldModel = "SingleCircleWorld";
   bool alwaysDisplayEdges = false;
   
 #ifndef WIN32
@@ -45,6 +50,7 @@ int main(int argc, char **argv)
     switch (o) {
     case 'p':
       probSpecFile = optarg;
+      worldModel=probSpecFile;
       break;
     case 'n':
       numNodes = atoi(optarg);
@@ -69,21 +75,27 @@ int main(int argc, char **argv)
     o = getopt(argc, argv, optstring);
   }
 #endif
+    
 
   World* world = 0;
 
-  if (worldModel == "SingleCircleWorld") {
-    world = new SingleCircleWorld;
+    if (worldModel == "SingleCircleWorld") {world = new SingleCircleWorld;}
 
     // By adding to this if-statement you can easily make the program
     // create an instance of your own class
 
-  } else {
+    else if (worldModel == "problem0.txt"){world = new Circle;}
+
+    else if (worldModel == "problem1.txt"){world = new Rectangle;}
+  
+  else {
     std::cerr << "worldModel \"" << worldModel << "\" is unknown,"
               << "specify a correct model with -w option or leave out" 
               << std::endl;
     return -1;
   }
+  
+    std::cout<<"Number of obstacles: "<< Obstacle::objectCount << std::endl;
 
   std::fstream fs;
   fs.open(probSpecFile.c_str(), std::ios::in);

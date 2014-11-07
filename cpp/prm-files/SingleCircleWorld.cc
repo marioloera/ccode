@@ -12,21 +12,25 @@
 #include <iostream>
 #include <cmath>
 
-SingleCircleWorld::SingleCircleWorld()
+SingleCircleWorld::SingleCircleWorld() //constructur
 {
   m_Xc = 5;
   m_Yc = 5;
   m_Radius = 4;
+  std::cout <<"SingleCircleWorld Constructur\n";
 }
 
 SingleCircleWorld::~SingleCircleWorld()
-{}
+{
+      std::cout <<"SingleCircleWorld Desctructor\n";
+}
 
 bool 
 SingleCircleWorld::collidesWith(double x, double y)
 {
   double dx = x - m_Xc;
   double dy = y - m_Yc;
+    //std::cout <<"SingleCircleWorld x="<<x<<" m-Xc=" << m_Xc <<std::endl;
   
   return (sqrt(dx*dx+dy*dy) <= m_Radius);
 }
