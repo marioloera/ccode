@@ -13,6 +13,7 @@ rosrun sensors distance_sensors &
 rosrun sensors pose &
 rosrun navigation navigation_node
 
+
 rosrun wall_following_controller wall_following_controller_node
 
 rostopic echo /distance_sensors_node

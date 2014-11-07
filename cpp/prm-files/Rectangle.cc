@@ -62,7 +62,7 @@ bool Rectangle::collidesWith(double x, double y)
     double theta=atan(t/z);
     double hip= sqrt(t*t+z*z);
     double dx=(hip*cos(theta+angle));
-    double dy=abs(hip*sin(theta+angle));
+    double dy=std::abs(hip*sin(theta+angle));
     
 
     

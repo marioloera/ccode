@@ -26,5 +26,3 @@ rqt_plot &   run in the background
 
 gedit ~/.bashrc
 #force_color_prompt=yes
-
-cp -R dirtocopy/ newdir/
