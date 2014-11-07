@@ -10,38 +10,64 @@
 #include <cmath>
 
 
+//#include "Rectangle.hh"
 #include "Obstacle.hh"
-#include "Rectangle.hh"
 
 //constructor
 Rectangle::Rectangle(){
     m_Xc = 5;
     m_Yc = 5;
-    width = 4;
-    height=2;
-    angle=0;
-    
-    a[0]=6;
-    a[1]=0;
-    b[0]=3;
-    b[1]=5;
-    c[0]=12;
-    c[1]=9;
-    d[0]=14;
-    d[1]=4;
-    
+    width = 2;
+    height=1;
+    angle=3.1617/2;
+    calcVertices();
 
     std::cout << "call constructor Rectangle"  << std::endl;
 }
 
 Rectangle::~Rectangle(){}
 
+void Rectangle::calcVertices(){
+//  width, height, angle;
+    // double m_Xc;// The center X coordinate of the object
+    //double m_Yc;
+    double j,k,l,m;
+    
+    j=width*sin(angle)/2;
+    k=height*sin(angle)/2;
+    l=width*cos(angle)/2;
+    m=height*cos(angle)/2;
+    
+    a[0]=m_Xc-l+k;
+    b[0]=m_Xc-l-k;
+    c[0]=m_Xc+l-k;
+    d[0]=m_Xc+l+k;
+    
+    a[1]=m_Yc-j-m;
+    b[1]=m_Yc-j+m;
+    c[1]=m_Yc+j+m;
+    d[1]=m_Yc+j-m;
+    
+    
+}
+
 bool Rectangle::collidesWith(double x, double y)
 {
-    double dx = x - m_Xc;
-    double dy = y - m_Yc;
+    //double dx = x - m_Xc;
+    //double dy = y - m_Yc;
     
-    return (sqrt(dx*dx+dy*dy) <= width);
+    
+    double t=x-m_Xc;
+    double z=y-m_Yc;
+    double theta=atan(t/z);
+    double hip= sqrt(t*t+z*z);
+    double dx=(hip*cos(theta+angle));
+    double dy=abs(hip*sin(theta+angle));
+    
+
+    
+    
+    return (dx<width/2 && dy<height/2);//true if collide
 }
 
 void Rectangle::writeMatlabDisplayCode(std::ostream &fs)
