@@ -1,4 +1,12 @@
-ssh ras@192.168.0.204 robo\
+ssh ras@192.168.0.104 %central
 
-ssh ras@192.168.0.104 central\
-}
+ssh ras@192.168.0.204 %robot
+
+ssh -XC ras@192.168.0.204
+password: ras14g4
+
+rosrun sensors pose &
+
+rostopic echo pose
+
+fg %1

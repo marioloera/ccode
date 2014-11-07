@@ -51,6 +51,7 @@ int main(int argc, char **argv)
     case 'p':
       probSpecFile = optarg;
       worldModel=probSpecFile;
+      //std::cout<<probSpecFile<<" ***"<<std::endl;
       break;
     case 'n':
       numNodes = atoi(optarg);
@@ -77,16 +78,56 @@ int main(int argc, char **argv)
 #endif
     
 
-  World* world = 0;
+    World* world = 0;
+    MyWorld* myworld=0;
+    
+    
+//    std::vector<std::string> board;
+//    for (std::string line; getline(std::cin, line);)
+//        board.push_back(line);
+    
+    
+    std::fstream fs1;
+
+        fs1.open(probSpecFile.c_str(), std::ios::in);
+    if (fs1 <= 0) {
+        std::cerr << "Failed to open problem spec file \""
+        << probSpecFile << "\"\n";
+        return -1;
+    }
+    
+    // Read the start and goal position
+    std::string name, skip1;
+    double x,y,r;
+    
+    if ( (fs1 >> skip1 >> skip1 >> skip1 >> skip1 >> skip1 >> name >> x >> y >> r) == false) {
+        std::cerr << "Could not read OBSTACLE data from \""
+        << probSpecFile << "\"\n";
+        return -1;
+    }else {
+        std::cout<<name<<std::endl;
+        std::cout<<x<<std::endl;
+        std::cout<<y<<std::endl;
+        std::cout<<r<<std::endl;
+        std::cout<<sizeof(fs1)/8<<std::endl;
+        //std::cout<<strlen(fs1)<<std::endl;
+
+    }
 
     if (worldModel == "SingleCircleWorld") {world = new SingleCircleWorld;}
 
     // By adding to this if-statement you can easily make the program
     // create an instance of your own class
 
-    else if (worldModel == "problem0.txt"){world = new Circle;}
+    else if (worldModel == "problem2.txt"){world = new Circle;}
 
     else if (worldModel == "problem1.txt"){world = new Rectangle;}
+    
+    else if (worldModel == "problem0.txt"){
+        world = new Rectangle;
+        //fs1 << std::endl;
+        
+            }
   
   else {
     std::cerr << "worldModel \"" << worldModel << "\" is unknown,"
@@ -97,22 +138,23 @@ int main(int argc, char **argv)
   
     std::cout<<"Number of obstacles: "<< Obstacle::objectCount << std::endl;
 
-  std::fstream fs;
-  fs.open(probSpecFile.c_str(), std::ios::in);
-  if (fs <= 0) {
-    std::cerr << "Failed to open problem spec file \""
-              << probSpecFile << "\"\n";
-    return -1;
-  }
+    std::fstream fs;
+    fs.open(probSpecFile.c_str(), std::ios::in);
+    if (fs <= 0) {
+        std::cerr << "Failed to open problem spec file \""
+        << probSpecFile << "\"\n";
+        return -1;
+    }
+    
+    // Read the start and goal position
+    double xStart, yStart, xGoal, yGoal;
+    std::string skip;
+    if ( (fs >> skip >> xStart >> yStart >> xGoal >> yGoal) == false) {
+        std::cerr << "Could not read start/goal data from \""
+        << probSpecFile << "\"\n";
+        return -1;
+    }
 
-  // Read the start and goal position
-  double xStart, yStart, xGoal, yGoal;
-  std::string skip;
-  if ( (fs >> skip >> xStart >> yStart >> xGoal >> yGoal) == false) {
-    std::cerr << "Could not read start/goal data from \""
-              << probSpecFile << "\"\n";
-    return -1;
-  }
 
   std::cout << std::endl
             << "Parameter setup" << std::endl
@@ -132,12 +174,21 @@ int main(int argc, char **argv)
             << std::endl
             << "Reading problem specification file \""
             << probSpecFile << "\"" << std::endl << std::endl;
+    
+            std::cout<<"mark1\n";
 
   if (!world->readObstacles(fs)) {
+      
+        
     std::cerr << "Failed to read obstacle, exiting\n";
+      
+     
     return -1;
   }
   fs.close();
+    
+    
+
   
   PRM prm;
 

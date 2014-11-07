@@ -17,8 +17,7 @@ World::World()
 World::~World()
 {}
 
-bool
-World::readObstacles(std::istream &fs)
+bool World::readObstacles(std::istream &fs)
 {
   std::cerr << std::endl
             << "World::readObstacles this function has not been overloaded"
@@ -29,8 +28,7 @@ World::readObstacles(std::istream &fs)
   return true;
 }
 
-void 
-World::writeMatlabDisplayCode(std::ostream &fs)
+void World::writeMatlabDisplayCode(std::ostream &fs)
 {
   std::cerr << std::endl
             << "World::writeMatlabDisplayCode not overloaded"

@@ -17,9 +17,9 @@
 Rectangle::Rectangle(){
     m_Xc = 5;
     m_Yc = 5;
-    width = 2;
-    height=1;
-    angle=3.1617/2;
+    width = 6;
+    height=6;
+    angle=3.1617/8;
     calcVertices();
 
     std::cout << "call constructor Rectangle"  << std::endl;
@@ -72,12 +72,11 @@ bool Rectangle::collidesWith(double x, double y)
 
 void Rectangle::writeMatlabDisplayCode(std::ostream &fs)
 {
-    fs << "plot("
-    << m_Xc << " + " << width << "*cos((0:5:360)/180*pi),"
-    << m_Yc << " + " << width << "*sin((0:5:360)/180*pi))"<< std::endl
+    
     
     //display vertices
     //%plot(a(1),a(2),'*r')
+    fs
     << "plot("<<a[0]<<","<<a[1]<<",'*r')"   << std::endl
     << "plot("<<b[0]<<","<<b[1]<<",'*r')"   << std::endl
     << "plot("<<c[0]<<","<<c[1]<<",'*r')"   << std::endl
