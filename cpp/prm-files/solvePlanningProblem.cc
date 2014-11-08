@@ -79,40 +79,40 @@ int main(int argc, char **argv)
     
 
     World* world = 0;
-    MyWorld* myworld=0;
+ //   MyWorld* myworld=0;
     
     
 //    std::vector<std::string> board;
 //    for (std::string line; getline(std::cin, line);)
 //        board.push_back(line);
     
-    
-    std::fstream fs1;
-
-        fs1.open(probSpecFile.c_str(), std::ios::in);
-    if (fs1 <= 0) {
-        std::cerr << "Failed to open problem spec file \""
-        << probSpecFile << "\"\n";
-        return -1;
-    }
-    
-    // Read the start and goal position
-    std::string name, skip1;
-    double x,y,r;
-    
-    if ( (fs1 >> skip1 >> skip1 >> skip1 >> skip1 >> skip1 >> name >> x >> y >> r) == false) {
-        std::cerr << "Could not read OBSTACLE data from \""
-        << probSpecFile << "\"\n";
-        return -1;
-    }else {
-        std::cout<<name<<std::endl;
-        std::cout<<x<<std::endl;
-        std::cout<<y<<std::endl;
-        std::cout<<r<<std::endl;
-        std::cout<<sizeof(fs1)/8<<std::endl;
-        //std::cout<<strlen(fs1)<<std::endl;
-
-    }
+//    
+//    std::fstream fs1;
+//
+//        fs1.open(probSpecFile.c_str(), std::ios::in);
+//    if (fs1 <= 0) {
+//        std::cerr << "Failed to open problem spec file \""
+//        << probSpecFile << "\"\n";
+//        return -1;
+//    }
+//    
+//    // Read the start and goal position
+//    std::string name, skip1;
+//    double x,y,r;
+//    
+//    if ( (fs1 >> skip1 >> skip1 >> skip1 >> skip1 >> skip1 >> name >> x >> y >> r) == false) {
+//        std::cerr << "Could not read OBSTACLE data from \""
+//        << probSpecFile << "\"\n";
+//        return -1;
+//    }else {
+//        std::cout<<name<<std::endl;
+//        std::cout<<x<<std::endl;
+//        std::cout<<y<<std::endl;
+//        std::cout<<r<<std::endl;
+//        std::cout<<sizeof(fs1)/8<<std::endl;
+//        //std::cout<<strlen(fs1)<<std::endl;
+//
+//    }
 
     if (worldModel == "SingleCircleWorld") {world = new SingleCircleWorld;}
 
