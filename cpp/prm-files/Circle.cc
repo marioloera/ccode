@@ -9,16 +9,23 @@
 
 #include <cmath>
 
-//#include "Circle.hh"
 #include "Obstacle.hh"
 
-
+//default constructor
 Circle::Circle(){
     m_Xc = 5;
     m_Yc = 3;
     m_Radius = 2;
     std::cout << "call constructor Circle"  << std::endl;
 }
+
+////constructor with arguments
+//Circle::Circle(double p1, double p2, double p3){
+//    m_Xc = p1;
+//    m_Yc = p2;
+//    m_Radius = p3;
+//    std::cout << "call constructor Circle with arguments"  << std::endl;
+//}
 
 Circle::~Circle(){}
 
@@ -31,6 +38,6 @@ bool Circle::collidesWith(double x, double y){
 void Circle::writeMatlabDisplayCode(std::ostream &fs){
     fs << "plot("
     << m_Xc << " + " << m_Radius << "*cos((0:5:360)/180*pi),"
-    << m_Yc << " + " << m_Radius << "*sin((0:5:360)/180*pi))"
-    << std::endl;
+    << m_Yc << " + " << m_Radius << "*sin((0:5:360)/180*pi))"<< std::endl
+    << "plot("<<m_Xc<<","<<m_Yc<<",'*r')"   << std::endl;
 }

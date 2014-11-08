@@ -13,17 +13,26 @@
 //#include "Rectangle.hh"
 #include "Obstacle.hh"
 
-//constructor
+//default constructor
 Rectangle::Rectangle(){
     m_Xc = 5;
     m_Yc = 5;
-    width = 6;
-    height=6;
-    angle=3.1617/8;
+    width = 7;
+    height=7;
+    angle=-.3;
     calcVertices();
-
     std::cout << "call constructor Rectangle"  << std::endl;
 }
+////constructor wiht arguments
+//Rectangle::Rectangle(double p1, double p2, double p3, double p4, double p5){
+//     m_Xc = p1;
+//     m_Yc = p2;
+//     width = p3;
+//     height=p4;
+//     angle=p5;
+//     calcVertices();
+//    std::cout << "call constructor Rectangle with arguments"  << std::endl;
+// }
 
 Rectangle::~Rectangle(){}
 
@@ -53,30 +62,22 @@ void Rectangle::calcVertices(){
 
 bool Rectangle::collidesWith(double x, double y)
 {
-    //double dx = x - m_Xc;
-    //double dy = y - m_Yc;
+    double X=x-m_Xc;
+    double Y=y-m_Yc;
+    double hip= sqrt(X*X+Y*Y);
     
-    
-    double t=x-m_Xc;
-    double z=y-m_Yc;
-    double theta=atan(t/z);
-    double hip= sqrt(t*t+z*z);
-    double dx=(hip*cos(theta+angle));
-    double dy=std::abs(hip*sin(theta+angle));
-    
-
-    
-    
+    double theta=atan(Y/X);
+    double dx=std::abs(hip*cos(theta-angle));
+    double dy=std::abs(hip*sin(theta-angle));
     return (dx<width/2 && dy<height/2);//true if collide
 }
 
 void Rectangle::writeMatlabDisplayCode(std::ostream &fs)
 {
-    
-    
     //display vertices
     //%plot(a(1),a(2),'*r')
     fs
+    << "plot("<<m_Xc<<","<<m_Yc<<",'*r')"   << std::endl
     << "plot("<<a[0]<<","<<a[1]<<",'*r')"   << std::endl
     << "plot("<<b[0]<<","<<b[1]<<",'*r')"   << std::endl
     << "plot("<<c[0]<<","<<c[1]<<",'*r')"   << std::endl

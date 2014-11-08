@@ -3,7 +3,7 @@
 //    MyWorld.hh
 //
 // = AUTHOR(S)
-//    Patric Jensfelt
+//    Mario Loera
 //
 /*----------------------------------------------------------------------*/
 
@@ -11,6 +11,13 @@
 #define MyWorld_hh
 
 #include "World.hh"
+#include <string>
+#include <vector>
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <stdlib.h>     /* atof */
+
 
 class MyWorld : public World {
 public:
@@ -38,6 +45,9 @@ public:
      * @param fs input stream to read objects from
      * @return true if the file as read successfully, false in case of errors
      */
+    
+ 
+    
     virtual bool readObstacles(std::istream &fs);
     
     
@@ -64,7 +74,7 @@ public:
      */
     virtual void writeMatlabDisplayCode(std::ostream &fs);
 
-    
+    //std::string ReadWord(std::vector<std::string> &file, int &i, int &j);
 };
 
 
