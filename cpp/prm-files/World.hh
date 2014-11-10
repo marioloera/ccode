@@ -66,6 +66,7 @@ public:
    * @return N/A
    */
   virtual void writeMatlabDisplayCode(std::ostream &fs);
+
 };
 
 #endif // World_hh

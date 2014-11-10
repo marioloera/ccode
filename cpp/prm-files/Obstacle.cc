@@ -19,5 +19,5 @@ Obstacle::Obstacle(){
     objectCount++;
 }
 
-Obstacle::~Obstacle(){}
+Obstacle::~Obstacle(){objectCount--;}
 

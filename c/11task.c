@@ -130,7 +130,7 @@ int main()
 //        printf("num[1] is: %c\n",num[1]);
         
         n=atof(num);
-        n*=10;
+        n*=10;//n=n*10;
         printf("the number is %.4f\n",n);
         
         int i;

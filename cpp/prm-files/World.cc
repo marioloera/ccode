@@ -19,6 +19,7 @@ World::~World()
 
 bool World::readObstacles(std::istream &fs)
 {
+    
   std::cerr << std::endl
             << "World::readObstacles this function has not been overloaded"
             << std::endl

@@ -19,13 +19,13 @@ Circle::Circle(){
     std::cout << "call constructor Circle"  << std::endl;
 }
 
-////constructor with arguments
-//Circle::Circle(double p1, double p2, double p3){
-//    m_Xc = p1;
-//    m_Yc = p2;
-//    m_Radius = p3;
-//    std::cout << "call constructor Circle with arguments"  << std::endl;
-//}
+//constructor with arguments
+Circle::Circle(double p1, double p2, double p3){
+    m_Xc = p1;
+    m_Yc = p2;
+    m_Radius = p3;
+    std::cout << "call constructor Circle with arguments"  << std::endl;
+}
 
 Circle::~Circle(){}
 

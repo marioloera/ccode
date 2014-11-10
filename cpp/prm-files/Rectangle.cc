@@ -10,7 +10,6 @@
 #include <cmath>
 
 
-//#include "Rectangle.hh"
 #include "Obstacle.hh"
 
 //default constructor
@@ -23,16 +22,16 @@ Rectangle::Rectangle(){
     calcVertices();
     std::cout << "call constructor Rectangle"  << std::endl;
 }
-////constructor wiht arguments
-//Rectangle::Rectangle(double p1, double p2, double p3, double p4, double p5){
-//     m_Xc = p1;
-//     m_Yc = p2;
-//     width = p3;
-//     height=p4;
-//     angle=p5;
-//     calcVertices();
-//    std::cout << "call constructor Rectangle with arguments"  << std::endl;
-// }
+//constructor wiht arguments
+Rectangle::Rectangle(double p1, double p2, double p3, double p4, double p5){
+     m_Xc = p1;
+     m_Yc = p2;
+     width = p3;
+     height=p4;
+     angle=p5;
+     calcVertices();
+    std::cout << "call constructor Rectangle with arguments"  << std::endl;
+ }
 
 Rectangle::~Rectangle(){}
 

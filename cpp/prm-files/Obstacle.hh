@@ -30,7 +30,7 @@ public:
 class Circle : public Obstacle{
 public:
     Circle();//default constructor
-    //Circle(double p1, double p2, double p3);//constructor with arguments
+    Circle(double p1, double p2, double p3);//constructor with arguments
     ~Circle();//destructor
     double m_Radius;/// The radius of the circle
     /* Use this function to check if a certain point collides with any
@@ -54,7 +54,7 @@ public:
 class Rectangle : public Obstacle{
 public:
     Rectangle();////default constructor
-    //Rectangle(double p1, double p2, double p3, double p4, double p5);//constructor with arguments
+    Rectangle(double p1, double p2, double p3, double p4, double p5);//constructor with arguments
     ~Rectangle();//destructor
     double  width, height, angle;/// The radius of the circle
     double a[2],b[2],c[2],d[2];//variable for vertices a[0]=ax a[1]=ay
