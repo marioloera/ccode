@@ -92,7 +92,10 @@ int main(int argc, char **argv)
     
     else if (worldModel == "problem4.txt"){world = new Circle(7,2,3.9);}
     else if (worldModel == "problem5.txt"){world = new Rectangle(5,5,8,8,.2);}
-    else if (worldModel == "problem6.txt"){world = new Rectangle(5,4.5,9,2,3.1416/2);}
+    else if (worldModel == "problem6.txt"){
+        world = new Rectangle(5,4.5,9,2,3.1416/2);
+    
+    }
 
     
     
@@ -149,7 +152,7 @@ int main(int argc, char **argv)
       
         
     std::cerr << "Failed to read obstacle, exiting\n";
-        std::cout<<"Mark 1"<< std::endl;
+  
      
     return -1;
   }

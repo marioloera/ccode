@@ -13,6 +13,9 @@ clean:
 	rm -f *.o
 	rm -f *.out
 	rm -f *.m
+r:
+	./a.out -w "MyWorld" -p "problem1.txt"
+
 run:
 	rm -f *.m
 	./a.out
