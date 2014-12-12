@@ -13,9 +13,6 @@
 
 //default constructor
 Circle::Circle(){
-    m_Xc = 5;
-    m_Yc = 3;
-    m_Radius = 2;
     std::cout << "call constructor Circle"  << std::endl;
 }
 

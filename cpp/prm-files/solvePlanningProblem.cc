@@ -50,7 +50,7 @@ int main(int argc, char **argv)
     switch (o) {
     case 'p':
       probSpecFile = optarg;
-      worldModel=probSpecFile;
+      //worldModel=probSpecFile;
       //std::cout<<probSpecFile<<" ***"<<std::endl;
       break;
     case 'n':
@@ -82,23 +82,18 @@ int main(int argc, char **argv)
 
     if (worldModel == "SingleCircleWorld") {world = new SingleCircleWorld;}
     
-
     // By adding to this if-statement you can easily make the program
     // create an instance of your own class
-
-    else if (worldModel == "problem1.txt"){world = new Circle;}
-    else if (worldModel == "problem2.txt"){world = new Circle;}
-    else if (worldModel == "problem3.txt"){world = new Circle;}
     
-    else if (worldModel == "problem4.txt"){world = new Circle(7,2,3.9);}
-    else if (worldModel == "problem5.txt"){world = new Rectangle(5,5,8,8,.2);}
-    else if (worldModel == "problem6.txt"){
-        world = new Rectangle(5,4.5,9,2,3.1416/2);
+    else if (worldModel == "MyWorld") {world = new MyWorld;}
     
-    }
-
-    
-    
+    //    else if (worldModel == "problem1.txt"){world = new Circle;}
+    //    else if (worldModel == "problem2.txt"){world = new Circle;}
+    //    else if (worldModel == "problem3.txt"){world = new Circle;}
+    //    
+    //    else if (worldModel == "problem4.txt"){world = new Circle(7,2,3.9);}
+    //    else if (worldModel == "problem5.txt"){world = new Rectangle(5,5,8,8,.2);}
+    //    else if (worldModel == "problem6.txt"){world = new Rectangle(5,4.5,9,2,3.1416/2);}
     
     else {
     std::cerr << "worldModel \"" << worldModel << "\" is unknown,"

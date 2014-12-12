@@ -13,8 +13,11 @@ clean:
 	rm -f *.o
 	rm -f *.out
 	rm -f *.m
+
 r:
 	./a.out -w "MyWorld" -p "problem1.txt"
+
+a: clean build r
 
 run:
 	rm -f *.m
