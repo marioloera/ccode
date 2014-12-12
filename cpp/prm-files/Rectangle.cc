@@ -14,12 +14,6 @@
 
 //default constructor
 Rectangle::Rectangle(){
-    m_Xc = 5;
-    m_Yc = 5;
-    width = 7;
-    height=7;
-    angle=-.3;
-    calcVertices();
     std::cout << "call constructor Rectangle"  << std::endl;
 }
 //constructor wiht arguments
@@ -59,8 +53,7 @@ void Rectangle::calcVertices(){
     
 }
 
-bool Rectangle::collidesWith(double x, double y)
-{
+bool Rectangle::collidesWith_R(double x, double y){
     double X=x-m_Xc;
     double Y=y-m_Yc;
     double hip= sqrt(X*X+Y*Y);
@@ -71,8 +64,8 @@ bool Rectangle::collidesWith(double x, double y)
     return (dx<width/2 && dy<height/2);//true if collide
 }
 
-void Rectangle::writeMatlabDisplayCode(std::ostream &fs)
-{
+void Rectangle::writeMatlabDisplayCode_R(std::ostream &fs)
+{   calcVertices();
     //display vertices
     //%plot(a(1),a(2),'*r')
     fs

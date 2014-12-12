@@ -10,20 +10,25 @@
 #ifndef Obstacle_hh
 #define Obstacle_hh
 
-//#include <vector>
+#include <vector>
 #include <iostream>
+#include <string>
 #include "MyWorld.hh"
 
 
 //the base class for representing the objects
 
-class Obstacle: public MyWorld {
+class Obstacle  {
 public:
   static int objectCount;
   Obstacle(); //constructor
   ~Obstacle();//destructor
   double m_Xc;// The center X coordinate of the object
   double m_Yc;// The center Y coordinate of the object
+  virtual bool collidesWith_C(double , double );
+  virtual void writeMatlabDisplayCode_C(std::ostream &);
+  virtual bool collidesWith_R(double , double );
+  virtual void writeMatlabDisplayCode_R(std::ostream &);
 };
 
 // Derived class
@@ -39,7 +44,7 @@ public:
      * @param y y-coordinate of point to check for collision
      * @return true if point (x,y) collides with any of the obstacles
      */
-    bool collidesWith(double x, double y);
+    bool collidesWith_C(double , double );
     /**
      * This function will go through all the obstacles in the world and
      * ask for them to to write matlab display code to the stream.
@@ -47,7 +52,7 @@ public:
      * @param fs reference to and output stream, for example an fstream (file)
      * @return N/A
      */
-    void writeMatlabDisplayCode(std::ostream &fs);
+    void writeMatlabDisplayCode_C(std::ostream &);
 };
 
 // Derived class
@@ -67,7 +72,7 @@ public:
      * @param y y-coordinate of point to check for collision
      * @return true if point (x,y) collides with any of the obstacles
      */
-    bool collidesWith(double x, double y);
+    bool collidesWith_R(double , double );
     
     /**
      * This function will go through all the obstacles in the world and
@@ -76,7 +81,7 @@ public:
      * @param fs reference to and output stream, for example an fstream (file)
      * @return N/A
      */
-    void writeMatlabDisplayCode(std::ostream &fs);
+    void writeMatlabDisplayCode_R(std::ostream &);
 };
 
 

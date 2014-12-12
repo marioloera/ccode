@@ -10,16 +10,13 @@
 #ifndef MyWorld_hh
 #define MyWorld_hh
 
+
 #include "World.hh"
-#include <string>
-#include <vector>
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
-#include <stdlib.h>     /* atof */
+#include "Obstacle.hh"
 
 
 class MyWorld : public World {
+
 public:
     
     /**
@@ -30,7 +27,7 @@ public:
     /**
      * Destructor
      */
-    virtual ~MyWorld();
+     ~MyWorld();
     
     /**
      * Use this function to read the obstacles from a file.
@@ -46,9 +43,8 @@ public:
      * @return true if the file as read successfully, false in case of errors
      */
     
- 
     
-    virtual bool readObstacles(std::istream &fs);
+     bool readObstacles(std::istream &fs);
     
     
     /**
@@ -61,7 +57,7 @@ public:
      * @param y y-coordinate of point to check for collision
      * @return true if point (x,y) collides with any of the obstacles
      */
-    virtual bool collidesWith(double x, double y) = 0;
+     bool collidesWith(double x, double y);
     
     /**
      * This function will go through all the obstacles in the world and
@@ -72,9 +68,9 @@ public:
      * @param fs reference to and output stream, for example an fstream (file)
      * @return N/A
      */
-    virtual void writeMatlabDisplayCode(std::ostream &fs);
+     void writeMatlabDisplayCode(std::ostream &fs);
 
-    std::string ReadWord(std::vector<std::string> &file, int &i, int &j);
+     // std::string ReadWord(std::vector<std::string> &file, int &i, int &j);
 };
 
 
