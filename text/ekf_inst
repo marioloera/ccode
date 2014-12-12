@@ -1,0 +1,50 @@
+
+to save a map, it has to be in a topic and the lates state
+rosrun map_server map_saver -f mll1
+
+to publish a map
+rosrun map_server map_server mll1.yaml
+
+
+open map
+gnome-open really_good_map_2.pgm
+
+rosbag record -O subset /turtle1/cmd_vel /turtle1/pose
+rosbag record -O subset /map /sensors/pose /sensors/ekf/pose_ekf /sensors/ir/distances
+_____________________________________________________________________________
+
+
+****************run mapping rosbag*******
+roslaunch main base.launch
+roslaunch main competition.launch phase:=0 save_map:=true
+%go to the directory to where the bag will be store
+rosbag record /map 
+
+***********save a map***********
+roslaunch main playback.launch
+%load the bag, publish all, check in rviz that the map is there
+%go to the folder to the folder where the map will be saved
+rosrun map_server map_saver -f mll1
+%play the rosbag, the map will be saved
+%the .yaml is the data
+%the pgm is the image see it with
+gnome-open really_good_map_2.pgm 
+
+****************run ekf******************
+rosrun map_server map_server map1-5.yaml
+%go to the directory to where the bag will be store
+rosbag record  /map /sensors/pose /sensors/ekf/pose_ekf /sensors/ir/distances
+roslaunch main base.launch
+
+****************copy files that are in nuc from my compu***
+scp username@b:/path/to/file /path/to/destination
+ scp ras@192.168.0.204:/home/ras/bag_ekf/data_for_ekf/1-2014-12-11-23-59-28.bag 1-2014-12-11-23-59-28.bag
+%roscore rviz
+roslaunch main playback.launch
+
+ scp -r ras@192.168.0.204:/home/ras/catkin_ws/devel/include/sensors ../
+
+
+
+
+
