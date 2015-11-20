@@ -1,5 +1,9 @@
 UNIX Comands
 
+paste this line in the ~/bashrc
+ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;36m\]\u\[\033[00;35m\]@\[\033[00;35m$
+'
+
 file FILENAME      	Get information about FILENAME
 
 ./HEXECUTABLE  	Run HEXECUTABLE FILE
