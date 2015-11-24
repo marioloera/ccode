@@ -32,7 +32,7 @@ int main()
         
         n=atof(num);
         n*=10;
-        printf("the number is %.4f\n",n);
+        printf("the number is times 10 is %.4f\n",n);
 
         printf("Do you need to get another number y/n:");
         scanf("%s",&cont);
@@ -43,15 +43,12 @@ int main()
         getchar();//clear stdin for the next fgets
 
     };
-    printf("\nValues for locals functions\n");
+    //see how values changes when the funcition leaves
+    printf("\nValues for locals functions\n\n");
     printf("f1 first call\n");
-    f1();
-    printf("f1 second call\n");
     f1();
     
     printf("f2 first call\n");
-    f2();
-    printf("f2 second call\n");
     f2();
     
     return 0;
