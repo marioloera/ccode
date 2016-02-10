@@ -1,1 +1,10 @@
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;36m\]\u\[\033[00;35m\]@\[\033[00;35m\]\h\[\033[00;35m\]:\[\033[01;33m\]\w\[\033[00;36m\]\$ '
+    
+
+#go to vim ~/.bashrc
+#uncomment line:
+force_color_prompt=yes
+
+
+#change the value of PS1 in:
+if [ "$color_prompt" = yes ]; then
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;36m\]\u\[\033[00;35m\]@\[\033[00;35m\]\h\[\033[00;35m\]:\[\033[01;33m\]\w\[\033[00;36m\]\$ '
